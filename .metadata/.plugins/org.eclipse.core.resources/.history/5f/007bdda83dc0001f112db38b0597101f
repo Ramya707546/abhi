@@ -1,0 +1,29 @@
+package com.springbootmvc.model;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+public class Productmodel {
+    @Data
+	@AllArgsConstructor
+	@NoArgsConstructor
+	
+	
+	   public class productmodel{
+		private String name;
+		private String brand;
+		private String madeIn;
+		private double price;
+		private int quantity;
+		private double discountPrice;
+		private double offerPrice;
+		private double taxPrice;
+		private double finalPrice;
+		private double stockValue;
+		
+	}
+}

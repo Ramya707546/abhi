@@ -1,0 +1,22 @@
+package com.springbootmvc.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Productmodel{
+	
+	private String  Name;
+	private String Brand;
+	private String Madein;
+	private double DiscountPrice;
+	private double TaxRate;
+	private double StockQuantity;
+
+
+	
+		
+	}

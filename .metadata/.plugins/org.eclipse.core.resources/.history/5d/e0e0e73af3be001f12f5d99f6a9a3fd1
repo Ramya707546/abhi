@@ -1,0 +1,11 @@
+package com.springbootmvc.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.springbootmvc.model.ProductModel;
+import com.springbootmvc.repository.ProductRespository;
+
+public class ProductService {
+	@Autowired
+ProductRespository productRespository;
+	} 

@@ -1,0 +1,18 @@
+package com.springbootmvc.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.springbootmvc.entity.ProductEntity;
+import com.springbootmvc.model.ProductModel;
+import com.springbootmvc.model.ProductModel.productmodel;
+import com.springbootmvc.repository.productrepository;
+
+@Service
+
+	@Autowired
+  productRespository productRespository;
+ public void saveproductDetails(ProductModel productmodel) 
+}
+	
+ 

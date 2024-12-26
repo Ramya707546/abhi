@@ -1,0 +1,46 @@
+package com.springbootmvc.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.springbootmvc.entity.ProductEntity;
+import com.springbootmvc.model.Productmodel;
+import com.springbootmvc.repository.ProductRepository;
+
+@Service
+public class ProductService {
+    @Autowired
+    private ProductRepository productRepository;
+
+    public void saveProductDetails(Productmodel productmodel) {
+        // Calculate the stock value
+        double stockValue = productmodel.getPrice() * productmodel.getQuantity();
+
+        // Calculate the discount price (e.g., 10% discount)
+        double discountPrice = productmodel.getPrice() * 0.1;
+
+        // Calculate the offer price (price after discount)
+        double offerPrice = productmodel.getPrice() - discountPrice;
+
+        // Calculate the tax price (e.g., 8% tax)
+        double taxPrice = productmodel.getPrice() * 0.08;
+
+        // Calculate the final price (offer price + tax)
+        double finalPrice = offerPrice + taxPrice;
+
+        // Create and populate ProductEntity
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setName(productmodel.getName());
+        productEntity.setBrand(productmodel.getBrand());
+        productEntity.setMadeIn(productmodel.getMadeIn());
+        productEntity.setQuantity(productmodel.getQuantity());
+        productEntity.setTaxPrice(taxPrice);
+        productEntity.setDiscountPrice(discountPrice);
+        productEntity.setOfferPrice(offerPrice);
+        productEntity.setFinalPrice(finalPrice);
+        productEntity.setStockValue(stockValue);
+
+        // Save the product entity to the database
+        productRepository.save(productEntity);
+    }
+}

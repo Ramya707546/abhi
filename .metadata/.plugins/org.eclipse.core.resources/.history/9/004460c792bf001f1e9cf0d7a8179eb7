@@ -1,0 +1,55 @@
+package com.springbootmvc.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.springbootmvc.entity.ProductEntity;
+import com.springbootmvc.model.ProductModel.productmodel;
+import com.springbootmvc.repository.productrepository;
+@Service
+public class ProductService {
+@Autowired
+ productrepository productrepository;
+	public void saveproductDetails(productmodel productmodel) {
+		// TODO Auto-generated method stub
+		{
+			double stockValue;
+			stockValue=productmodel.getPrice()*productmodel.getQuantity();
+			
+			double discountPrice;
+			discountPrice=productmodel.getPrice()*productmodel.getPrice()/100;
+			
+			double offerPrice;
+			offerPrice=productmodel.getPrice()*productmodel.getPrice();
+			
+			double taxPrice;
+			taxPrice=productmodel.getPrice()*0.8;
+			
+			double finalPrice;
+			finalPrice=offerPrice+taxPrice;
+			ProductEntity productEntity=new ProductEntity();
+			
+			productEntity.setName(productmodel.getName());
+			productEntity.setBrand(productmodel.getBrand());
+			productEntity.setMadeIn(productmodel.getMadeIn());
+			productEntity.setQuantity(productmodel.getQuantity());
+			
+			productEntity.setTaxPrice(taxPrice);
+			productEntity.setDiscountPrice(discountPrice);
+			productEntity.setOfferPrice(offerPrice);
+			productEntity.setFinalPrice(finalPrice);
+			productEntity.setStockValue(stockValue);
+		}
+	}
+			
+			public List<ProductEntity>getAllProducts()
+
+			{
+				List<ProductEntity>products=productrepository.findAll();
+			        return products;	
+			}
+	
+}
+
